@@ -1,0 +1,39 @@
+package:
+  name: idops
+  version: 0.2.2
+
+source:
+  path: ../
+  #git_rev: master
+  #git_url: https://gitlab.gwdg.de/microbiology-bioinformatics-goe/idops
+
+build:
+  script_env:
+    - CI_PIPELINE_ID
+  number: {{ CI_PIPELINE_ID }}
+  script:
+      cat idops/ressources/hmms/*.hmm > idops/hmm/idops.hmm ;
+      hmmpress "$(python -c 'from idops.hmm import idops_hmm_db; print(idops_hmm_db)')" ;
+      python setup.py install --single-version-externally-managed --record=record.txt ;
+
+requirements:
+  build:
+    - python==3.8
+    - setuptools
+    - hmmer==3.3
+
+  run:
+    - python==3.8
+    - biopython
+    - pandas
+    - matplotlib
+    - numpy>=1.18
+    - scipy
+    - hmmer==3.3
+
+test:
+  imports:
+    - idops
+
+about:
+  home:
