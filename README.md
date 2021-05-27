@@ -10,7 +10,7 @@ conda install
 Make idops conda environment with local package:
 
 ```
-conda create -n idops -c gamb-go idops
+conda create -n idops -c gamb-go -c bioconda idops
 ````
 
 Test installation with:
