@@ -2,10 +2,15 @@ package:
   name: idops
   version: {{ GIT_DESCRIBE_TAG }}
 
+build:
+  number: {{ GIT_DESCRIBE_NUMBER }}
+
+  # Note that this will override the default build string with the Python
+  # and NumPy versions
+  string: {{ GIT_BUILD_STR }}
+
 source:
-  path: ../
-  #git_rev: master
-  #git_url: https://gitlab.gwdg.de/microbiology-bioinformatics-goe/idops
+  git_url: ../
 
 build:
   script:
