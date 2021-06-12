@@ -1,6 +1,6 @@
 package:
   name: idops
-  version: {{ GIT_DESCRIBE_TAG }}
+  version: {{ environ.get('GIT_DESCRIBE_TAG') }}
 
 build:
   number: {{ GIT_DESCRIBE_NUMBER }}
