@@ -8,9 +8,6 @@ source:
   #git_url: https://gitlab.gwdg.de/microbiology-bioinformatics-goe/idops
 
 build:
-  script_env:
-    - CI_PIPELINE_ID
-  number: {{ CI_PIPELINE_ID }}
   script:
       cat idops/ressources/hmms/*.hmm > idops/hmm/idops.hmm ;
       hmmpress "$(python -c 'from idops.hmm import idops_hmm_db; print(idops_hmm_db)')" ;
