@@ -39,4 +39,4 @@ jobs:
       - run: mkdir build-pkgs
       - run: conda build --output-folder build-pkgs/ conda/
       - run: anaconda login --username GAMB-GO --password ${ANACONDA_TOKEN}
-      - run: anaconda upload --channel GAMB-GO build-pkgs/*.bz
+      - run: anaconda upload --channel GAMB-GO build-pkgs/*.bz2
