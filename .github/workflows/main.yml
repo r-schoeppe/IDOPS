@@ -35,10 +35,8 @@ jobs:
           # Additional channels like 'conda-forge' which can be used to install packages
           conda-channels: bioconda
       - run: which python
-      - run: conda install conda-build
-      - run: conda build conda/
-      - name: publish-to-conda
-        uses: maxibor/conda-package-publish-action@v1.1
-        with:
-          subDir: 'conda'
-          AnacondaToken: ${{ secrets.ANACONDA_TOKEN }}
+      - run: conda install conda-build anaconda-client
+      - run: mkdir build-pkgs
+      - run: conda build --output-folder build-pkgs/ conda/
+      - run: anaconda login --username GAMB-GO --password ${ANACONDA_TOKEN}
+      - run: anaconda upload --channel GAMB-GO build-pkgs/*.bz
