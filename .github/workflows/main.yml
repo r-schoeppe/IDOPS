@@ -24,7 +24,6 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       
-      - run: anaconda -t ${{ secrets.ANACONDA_TOKEN }} login
       - uses: actions/checkout@v2
       
       - name: setup-conda
@@ -38,6 +37,7 @@ jobs:
           conda-channels: bioconda
       - run: which python
       - run: conda install conda-build anaconda-client
+      - run: anaconda -t ${{ secrets.ANACONDA_TOKEN }} login
       - run: mkdir build-pkgs
       - run: conda build --output-folder build-pkgs/ conda/
       - run: anaconda upload --channel GAMB-GO build-pkgs/*.bz2
