@@ -37,7 +37,6 @@ jobs:
           conda-channels: bioconda
       - run: which python
       - run: conda install conda-build anaconda-client
-      - run: anaconda -t ${{ secrets.ANACONDA_TOKEN }} login
       - run: mkdir build-pkgs
       - run: conda build --output-folder build-pkgs/ conda/
-      - run: anaconda upload --channel GAMB-GO build-pkgs/*.bz2
+      - run: anaconda -t ${{ secrets.ANACONDA_TOKEN }} upload --channel GAMB-GO build-pkgs/*.bz2
