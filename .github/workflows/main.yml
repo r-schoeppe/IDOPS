@@ -40,6 +40,6 @@ jobs:
       - run: which python
       - run: conda install conda-build anaconda-client
       - run: mkdir ${{ matrix.python-version }}
-      - run: sed -i "s/{{ GIT_DESCRIBE_TAG }}/$(git describe --tags)/"
+      - run: sed -i "s/{{ GIT_DESCRIBE_TAG }}/$(git describe --tags)/" conda/meta.yaml
       - run: conda build --output-folder ${{ matrix.python-version }}/ conda/
       - run: anaconda -t ${{ secrets.ANACONDA_TOKEN }} upload --channel GAMB-GO ${{ matrix.python-version }}/linux-64/idops-*.tar.bz2
