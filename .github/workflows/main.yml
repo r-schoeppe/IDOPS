@@ -23,6 +23,8 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      
+      - run: anaconda -t ${{ secrets.ANACONDA_TOKEN }} login
       - uses: actions/checkout@v2
       
       - name: setup-conda
@@ -38,5 +40,4 @@ jobs:
       - run: conda install conda-build anaconda-client
       - run: mkdir build-pkgs
       - run: conda build --output-folder build-pkgs/ conda/
-      - run: anaconda login -t ${{ secrets.ANACONDA_TOKEN }}
       - run: anaconda upload --channel GAMB-GO build-pkgs/*.bz2
