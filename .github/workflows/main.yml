@@ -42,4 +42,4 @@ jobs:
       - run: mkdir build-pkgs
       - run: git describe --tags
       - run: conda build --output-folder build-pkgs/ conda/
-      - run: anaconda -t ${{ secrets.ANACONDA_TOKEN }} upload --channel GAMB-GO build-pkgs/linux-64/*.bz2
+      - run: anaconda -t ${{ secrets.ANACONDA_TOKEN }} upload --channel GAMB-GO build-pkgs/linux-64/idops-*.tar.bz2
