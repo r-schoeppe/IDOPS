@@ -38,5 +38,6 @@ jobs:
       - run: which python
       - run: conda install conda-build anaconda-client
       - run: mkdir build-pkgs
+      - run: git describe --tags
       - run: conda build --output-folder build-pkgs/ conda/
       - run: anaconda -t ${{ secrets.ANACONDA_TOKEN }} upload --channel GAMB-GO build-pkgs/linux-64/*.bz2
