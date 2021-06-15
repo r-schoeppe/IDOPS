@@ -39,7 +39,7 @@ jobs:
           conda-channels: bioconda
       - run: which python
       - run: conda install conda-build anaconda-client
-      - run: mkdir build-pkgs
+      - run: mkdir ${{ matrix.python-version }}
       - run: git describe --tags
-      - run: conda build --output-folder build-pkgs/ conda/
-      - run: anaconda -t ${{ secrets.ANACONDA_TOKEN }} upload --channel GAMB-GO build-pkgs/linux-64/idops-*.tar.bz2
+      - run: conda build --output-folder ${{ matrix.python-version }}/ conda/
+      - run: anaconda -t ${{ secrets.ANACONDA_TOKEN }} upload --channel GAMB-GO ${{ matrix.python-version }}/linux-64/idops-*.tar.bz2
