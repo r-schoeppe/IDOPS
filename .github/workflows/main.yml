@@ -38,5 +38,4 @@ jobs:
       - run: conda install conda-build anaconda-client
       - run: mkdir build-pkgs
       - run: conda build --output-folder build-pkgs/ conda/
-      - run: anaconda login --username GAMB-GO --password ${{ secrets.ANACONDA_TOKEN }}
-      - run: anaconda upload --channel GAMB-GO build-pkgs/*.bz2
+      - run: anaconda upload -t ${{ secrets.ANACONDA_TOKEN }} --channel GAMB-GO build-pkgs/*.bz2
