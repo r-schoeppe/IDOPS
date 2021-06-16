@@ -1,6 +1,6 @@
 package:
   name: idops
-  version: {{ GIT_DESCRIBE_TAG }}
+  version: 0.2.2.dev{{ GIT_DESCRIBE_NUMBER }}
 
 build:
   number: {{ GIT_DESCRIBE_NUMBER }}
