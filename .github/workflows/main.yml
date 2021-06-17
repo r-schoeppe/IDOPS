@@ -39,11 +39,11 @@ jobs:
           # Additional channels like 'conda-forge' which can be used to install packages
           conda-channels: bioconda
       - run: which python
-      - run: conda install conda-build anaconda-client
+      - run: conda install conda-build conda-verify anaconda-client
       - run: mkdir ${{ matrix.python-version }}
       - run: git describe --tags
       - run: conda build --output-folder ${{ matrix.python-version }}/ conda/
       
       - name: Publish if tagged
         #if: startsWith(github.ref, 'refs/tags/')
-        run: anaconda -t ${{ secrets.ANACONDA_TOKEN }} upload --label main ${{ matrix.python-version }}/linux-64/idops-*.tar.bz2
+        run: anaconda -t ${{ secrets.ANACONDA_TOKEN }} upload --force --label main ${{ matrix.python-version }}/linux-64/idops-*.tar.bz2
