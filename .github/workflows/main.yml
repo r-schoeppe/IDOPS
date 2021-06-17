@@ -45,5 +45,5 @@ jobs:
       - run: conda build --output-folder ${{ matrix.python-version }}/ conda/
       
       - name: Publish if tagged
-        if: startsWith(github.ref, 'refs/tags/')
+        #if: startsWith(github.ref, 'refs/tags/')
         run: anaconda -t ${{ secrets.ANACONDA_TOKEN }} upload --label main ${{ matrix.python-version }}/linux-64/idops-*.tar.bz2
