@@ -1,9 +1,9 @@
 package:
   name: idops
-  version: 0.2.2.dev{{ GIT_DESCRIBE_NUMBER }}
+  version: 0.2.2
 
 build:
-  number: {{ GIT_DESCRIBE_NUMBER }}
+  number: 0
 
   # Note that this will override the default build string with the Python
   # and NumPy versions
