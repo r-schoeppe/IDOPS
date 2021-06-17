@@ -20,12 +20,12 @@ build:
 
 requirements:
   build:
-    - python>=3.6
+    - python  {{ python }}
     - setuptools
     - hmmer==3.3
 
   run:
-    - python>=3.6
+    - python  {{ python }}
     - biopython
     - pandas
     - matplotlib
