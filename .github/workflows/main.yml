@@ -6,6 +6,7 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
+    tags: releases/[1-9]+.[0-9]+.[0-9]+
     branches: [ main ]
 
   # Allows you to run this workflow manually from the Actions tab
@@ -40,7 +41,7 @@ jobs:
       - run: which python
       - run: conda install conda-build anaconda-client
       - run: mkdir ${{ matrix.python-version }}
-      - run: sed -i "s/{{ GIT_DESCRIBE_TAG }}/$(git describe --tags)/" conda/meta.yaml
+      - run: git describe --tags
       - run: conda build --output-folder ${{ matrix.python-version }}/ conda/
       
       - name: Publish if tagged
